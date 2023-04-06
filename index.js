@@ -23,10 +23,17 @@ const pool = mariadb.createPool({
   connectionLimit: 5,
 });
 
-console.log(mariadb);
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+app.get("/", async (req, res) => {
+  try {
+    res.send("Hello api!")
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
 });
 app.get("/test", async (req, res) => {
   try {
@@ -91,3 +98,4 @@ app.post("/login", async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 });
+
