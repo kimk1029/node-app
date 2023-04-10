@@ -31,7 +31,8 @@ const getBbsById = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const id = req.params.id;
         const connection = yield database_1.default.getConnection();
-        const result = yield connection.query("SELECT bbs_uid, title, author, creation_date FROM E_BBS WHERE bbs_uid = ?", [id]);
+        const result = yield connection.query("SELECT bbs_uid, title, author, contents, creation_date FROM E_BBS WHERE bbs_uid = ?", [id]);
+        console.log(result);
         connection.release();
         if (result.length === 0) {
             return res.status(404).send({ error: "Post not found." });

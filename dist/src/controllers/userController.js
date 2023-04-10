@@ -20,7 +20,7 @@ const database_1 = __importDefault(require("../database"));
 // Other code related to the user routes
 const index = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.send("Hello API!");
+        res.send("Hello API23!");
     }
     catch (error) {
         res.status(500).send({ error: error.message });
