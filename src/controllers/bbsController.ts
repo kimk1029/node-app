@@ -22,7 +22,6 @@ export const getBbsById = async (req: Request, res: Response) => {
       "SELECT bbs_uid, title, author, contents, creation_date FROM E_BBS WHERE bbs_uid = ?",
       [id]
     );
-    console.log(result);
     connection.release();
 
     if (result.length === 0) {
@@ -39,14 +38,18 @@ export const createBbsPost = async (req: Request, res: Response) => {
   try {
     const { title, author, contents } = req.body;
     const connection = await pool.getConnection();
+    console.log({ title, author, contents });
     const result = await connection.query(
       "INSERT INTO E_BBS (title, author, contents, creation_date) VALUES (?, ?, ?, NOW())",
       [title, author, contents]
     );
     connection.release();
-    res
-      .status(201)
-      .json({ message: "Post created successfully", id: result.insertId });
+    console.log(result);
+    res.status(201).json({
+      message: "Post created successfully",
+      id: result.insertId.toString(),
+    });
+    console.log("####3");
   } catch (error) {
     res.status(500).send({ error: (error as Error).message });
   }
