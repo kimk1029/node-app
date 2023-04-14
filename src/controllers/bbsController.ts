@@ -4,7 +4,9 @@ import pool from "../database";
 
 export const getBbs = async (req: Request, res: Response) => {
   try {
+    console.log(pool);
     const connection = await pool.getConnection();
+    console.log(connection);
     const result = await connection.query(
       "SELECT bbs_uid, title, author, creation_date FROM E_BBS;"
     );

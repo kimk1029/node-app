@@ -14,6 +14,9 @@ app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 app.use("/", routes_1.default);
 const PORT = process.env.PORT || 8000;
+const DBPORT = process.env.DB_PORT;
+const DBHOST = process.env.DB_HOST;
+console.log(DBPORT, DBHOST);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

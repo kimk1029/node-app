@@ -33,4 +33,6 @@ router.post("/register", userController.register);
 router.post("/login", userController.login);
 router.get("/bbs", bbsController.getBbs);
 router.get("/bbs/:id", bbsController.getBbsById);
+router.post("/bbs", bbsController.createBbsPost);
+router.delete("/bbs/:id", bbsController.deleteBbsPost);
 exports.default = router;
